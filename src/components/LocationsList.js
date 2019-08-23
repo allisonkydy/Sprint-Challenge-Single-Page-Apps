@@ -22,7 +22,7 @@ export default function LocationsList() {
    return (
       <section>
          {locations.results.map(location => {
-            return <LocationCard location={location} />
+            return <LocationCard location={location} key={location.id}/>
          })}
       </section>
    )

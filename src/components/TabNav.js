@@ -1,6 +1,7 @@
 import React from "react";
 import { Tab, Menu, Icon } from "semantic-ui-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Route } from "react-router-dom";
+import WelcomePage from "./WelcomePage";
 import CharacterList from "./CharacterList";
 import LocationsList from "./LocationsList";
 import EpisodeList from "./EpisodeList";
@@ -11,9 +12,20 @@ import EpisodeList from "./EpisodeList";
 // https://react.semantic-ui.com/modules/tab/
 export default function TabNav() {
    return (
-      // <CharacterList />
-      // <LocationsList />
-      <EpisodeList />
+      <>
+         {/* <Tab panes={panes} /> */}
+         <NavLink to="/">Home</NavLink>
+         <NavLink to="/characters">Characters</NavLink>
+         <NavLink to="/locations">Locations</NavLink>
+         <NavLink to="/episodes">Episodes</NavLink>
+         <Route exact path="/" component={WelcomePage} />
+         <Route path="/characters" component={CharacterList} />
+         <Route path="/locations" component={LocationsList} />
+         <Route path="/episodes" component={EpisodeList} />
+         {/* // <CharacterList />
+         // <LocationsList />
+         // <EpisodeList /> */}
+      </>
    )
 };
 
