@@ -3,7 +3,6 @@ import axios from "axios";
 import { Pagination } from "semantic-ui-react";
 
 import EpisodeCard from "./EpisodeCard";
-import CharacterList from "./CharacterList";
 
 export default function EpisodeList() {
    const [episodes, setEpisodes] = useState({});
