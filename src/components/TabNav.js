@@ -6,8 +6,7 @@ import CharacterList from "./CharacterList";
 import LocationsList from "./LocationsList";
 import EpisodeList from "./EpisodeList";
 
-export default function TabNav(props) {
-   console.log(props)
+export default function TabNav() {
    const [activeItem, setActiveItem] = useState('home');
 
    const handleItemClick = (e, { name }) => {
