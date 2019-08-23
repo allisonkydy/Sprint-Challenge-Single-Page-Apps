@@ -33,7 +33,7 @@ export default function CharacterList() {
         firstItem={null}
         lastItem={null}
         siblingRange={1}
-        totalPages={25}
+        totalPages={characters.info.pages}
       />
       <section className="character-list grid-view">
         {characters.results.map(character => {
