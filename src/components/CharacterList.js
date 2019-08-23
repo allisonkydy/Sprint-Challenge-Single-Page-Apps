@@ -1,16 +1,45 @@
 import React, { useEffect, useState } from "react";
+import axios from 'axios';
+import CharacterCard from "./CharacterCard";
+import { Pagination } from "semantic-ui-react";
 
 export default function CharacterList() {
-  // TODO: Add useState to track data from useEffect
+  const [characters, setCharacters] = useState({});
+  const [page, setPage] = useState(1);
+
+  const changePage = (e, { activePage }) => {
+    setPage(activePage);
+  }
 
   useEffect(() => {
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
+    axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`)
+      .then(response => {
+        console.log(response);
+        setCharacters(response.data);
+      })
+      .catch(error => console.log(error))
+  }, [page]);
+
+  if (!characters.results) return <h2>Loading...</h2>
 
   return (
-    <section className="character-list grid-view">
-      <h2>TODO: `array.map()` over your state here!</h2>
-    </section>
+    <>
+      <Pagination
+        boundaryRange={0}
+        defaultActivePage={1}
+        activePage={page}
+        onPageChange={changePage}
+        ellipsisItem={null}
+        firstItem={null}
+        lastItem={null}
+        siblingRange={1}
+        totalPages={characters.info.pages}
+      />
+      <section className="character-list grid-view">
+        {characters.results.map(character => {
+          return <CharacterCard character={character} key={character.id}/>
+        })}
+      </section>
+    </>
   );
 }
