@@ -20,7 +20,7 @@ export default function EpisodeList() {
   if (!episodes.results) return <h2>Loading...</h2>
 
    return (
-      <section>
+      <section className="grid-view">
          {episodes.results.map(episode => {
             return <EpisodeCard episode={episode} key={episode.id}/>
          })}

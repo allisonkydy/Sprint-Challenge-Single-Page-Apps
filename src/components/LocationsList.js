@@ -20,7 +20,7 @@ export default function LocationsList() {
   if (!locations.results) return <h2>Loading...</h2>
 
    return (
-      <section>
+      <section className="grid-view">
          {locations.results.map(location => {
             return <LocationCard location={location} key={location.id}/>
          })}
